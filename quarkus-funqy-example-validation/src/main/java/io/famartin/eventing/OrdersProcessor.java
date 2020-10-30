@@ -15,6 +15,7 @@ import io.quarkus.funqy.Funq;
 import io.quarkus.funqy.knative.events.CloudEvent;
 import io.quarkus.funqy.knative.events.CloudEventMapping;
 
+// this tries to show explicit serialization
 //this example is not fully functional because ideally schema validation functionalities should be contributed into quarkus funqy extension
 public class OrdersProcessor {
     private static final Logger log = Logger.getLogger(OrdersProcessor.class);

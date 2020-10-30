@@ -67,6 +67,29 @@ public class JsonSchemaMiddleware {
         }
     }
 
+    public <T> ParsedData<T> readParsedData(CloudEvent cloudevent, Class<T> clazz) {
+        if (cloudevent.getData() == null) {
+            return null;
+        }
+
+        try {
+            DataSchemaEntry<SchemaValidator> dataschema = getSchemaValidatorCache().getSchema(cloudevent);
+            SchemaValidator schemaValidator = dataschema.getSchema();
+            
+
+            JsonParser parser = mapper.getFactory().createParser(cloudevent.getData());
+            parser = api.decorateJsonParser(schemaValidator, parser);
+
+            T data = mapper.readValue(parser, clazz);
+            ParsedData<T> pd = new ParsedData<>();
+            pd.data = data;
+            pd.datacontenttype = dataschema.getDataSchema();
+            return pd;
+        } catch (IOException e) {
+            throw new UncheckedIOException(e);
+        }
+    }
+
     public <T> CloudEvent writeData(CloudEvent cloudevent, T data) {
         if (data == null) {
             return cloudevent;
@@ -88,15 +111,17 @@ public class JsonSchemaMiddleware {
         }
     }
 
-    public void validateData(CloudEvent cloudevent) {
+    public String validateData(CloudEvent cloudevent) {
         if (cloudevent.getData() == null) {
-            return;
+            return "";
         }
 
         DataSchemaEntry<Schema> dataschema = getSchemaCache().getSchema(cloudevent);
         Schema schema = dataschema.getSchema();
 
         schema.validate(new JSONObject(new JSONTokener(new ByteArrayInputStream(cloudevent.getData()))));
+        
+        return dataschema.getDataSchema();
     }
 
     private synchronized CloudEventSchemaCache<Schema> getSchemaCache() {

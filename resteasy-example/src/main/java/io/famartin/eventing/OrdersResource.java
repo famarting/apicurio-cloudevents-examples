@@ -23,7 +23,7 @@ import io.famartin.cloudevents.JsonSchemaMiddleware;
 
 /**
  * 
- * This example shows the explicit usage of apicurio cloudevents serdes library
+ * This example shows the explicit usage of apicurio cloudevents serdes library on a JAX RS application 
  * 
  */
 @ApplicationScoped
