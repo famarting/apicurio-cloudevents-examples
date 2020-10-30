@@ -1,0 +1,1 @@
+http :8082 ce-type:io.famartin.new-order ce-source:test ce-id:saffa ce-specversion:1.0 itemId=abc quantity:=4

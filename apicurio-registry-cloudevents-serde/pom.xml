@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.famartin</groupId>
+    <artifactId>event-registry-cloudevents</artifactId>
+    <packaging>jar</packaging>
+    <name>event-registry-cloudevents</name>
+    <version>0.0.1</version>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <medeia-validator-jackson.version>1.1.1</medeia-validator-jackson.version>
+
+        <org.everit.json.schema.version>1.12.1</org.everit.json.schema.version><!-- TODO unification -->
+
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>io.apicurio</groupId>
+            <artifactId>apicurio-registry-rest-client</artifactId>
+            <version>1.3.2-SNAPSHOT</version>
+        </dependency>
+
+        <!-- <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+        </dependency> -->
+
+        <dependency>
+            <groupId>com.worldturner.medeia</groupId>
+            <artifactId>medeia-validator-jackson</artifactId>
+            <version>${medeia-validator-jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.everit-org.json-schema</groupId>
+            <artifactId>org.everit.json.schema</artifactId>
+            <version>${org.everit.json.schema.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.cloudevents</groupId>
+            <artifactId>cloudevents-api</artifactId>
+            <version>2.0.0-milestone3</version>
+        </dependency>
+
+<!--         <dependency> -->
+<!--             <groupId>io.cloudevents</groupId> -->
+<!--             <artifactId>cloudevents-core</artifactId> -->
+<!--             <version>2.0.0-milestone3</version> -->
+<!--         </dependency> -->
+
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+</project>
